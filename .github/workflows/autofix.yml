@@ -1,0 +1,42 @@
+name: autofix.ci
+
+on:
+  pull_request:
+  push:
+    branches: [ "master" ]
+permissions:
+  contents: read
+
+jobs:
+  autofix:
+    runs-on: ubuntu-latest
+    env:
+      PUPPETEER_SKIP_DOWNLOAD: 'true'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install npm
+        uses: npm/action-setup@v3.0.0
+
+      - name: Set node version to 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+
+      - run: npm install
+
+      - name: Run eslint
+        run: npm run lint --fix
+
+      # - name: Run prettier
+      #   run: npm run format
+
+      # Optimize all PNGs with https://pngquant.org/
+      - run: sudo apt-get update && sudo apt-get install -y pngquant
+      - name: Run pngquant
+        run: |
+          shopt -s globstar
+          pngquant -f --ext .png --skip-if-larger -- **/*.png
+
+      - uses: autofix-ci/action@d3e591514b99d0fca6779455ff8338516663f7cc

@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "strict": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "experimentalDecorators": true, // for vue-property-decorator
+    "noImplicitAny": false, // for elder files with no declaration file
+    "downlevelIteration": true,
+    "baseUrl": "",
+    "skipLibCheck": true,
+    "lib": ["ESNext", "DOM"],
+    "esModuleInterop": true,
+    "paths": {
+      "@/*": ["./src/*"],
+    },
+    "jsx": "preserve",
+    "allowJs": true,
+    "outDir":"ts-jest",
+    "resolveJsonModule": true
+  },
+  "vueCompilerOptions": {
+    "target": 2.7
+  },
+  "include": ["src/**/*.ts","src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+}

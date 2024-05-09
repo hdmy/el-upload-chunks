@@ -1,0 +1,19 @@
+{
+  "success": true,
+  "code": 0,
+  "data": {
+      "id": 3025,
+      "name": "130M.csv",
+      "md5": "871ebd50c383eb4b7aa3fa846f226d82",
+      "status": 0,
+      "chunkIdList": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+      ]
+  }
+}
